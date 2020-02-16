@@ -1,10 +1,10 @@
-let Roles = require('Roles.js');
+let Roles = require('Roles');
 
 class CreepWrapper{
     constructor(creep){
         this._creep = creep;
         this._action = null;
-        this._roles = _.map(this._creep.memory.roles, Roles.creatRole);
+        this._roles = _.map(this._creep.memory.roles, Roles.createRole);
         this._target = null;
     }
     

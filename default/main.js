@@ -1,4 +1,4 @@
-import {CreepWrapper} from "./Wrapper";
+let Wrappers = require('Wrapper');
 
 module.exports.loop = function () {
     let spawn = Game.spawns["Spawn1"];
@@ -54,7 +54,7 @@ function spawnCreeps(spawn){
 function doCreepStuff(){
     for(let name in Game.creeps) {
         let creep = Game.creeps[name];
-        let wrapper = new CreepWrapper(creep);
+        let wrapper = new Wrappers.CreepWrapper(creep);
 
         try {
             let roleToProceed = _.find(wrapper.roles, (role) => role.canProceed(wrapper));

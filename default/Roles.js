@@ -1,5 +1,4 @@
-import {Action} from "./Actions";
-
+let Actions = require('Actions');
 class Role{
     get name(){
         return 'Role';
@@ -15,7 +14,7 @@ class Role{
 
     getNextAction(creepWrapper){
         //ToDo: Implement logic to get succeeding action
-        return new Action();
+        return new Actions.Action();
     }
 
     run(creepWrapper){
