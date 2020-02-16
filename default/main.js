@@ -10,7 +10,7 @@ module.exports.loop = function () {
 }
 
 function doTowerStuff(){
-    var tower = Game.getObjectById('5d376b784ddb537d0a6b8d81');
+    let tower = Game.getObjectById('5d376b784ddb537d0a6b8d81');
     if(tower) {
         var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
             filter: (structure) => structure.hits < structure.hitsMax
@@ -19,7 +19,7 @@ function doTowerStuff(){
             tower.repair(closestDamagedStructure);
         }
 
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+        let closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
         if(closestHostile) {
             tower.attack(closestHostile);
         }

@@ -1,4 +1,4 @@
-class Action{
+module.exports = class Action{
     get name(){
         return 'Action';
     }
@@ -18,8 +18,4 @@ class Action{
     perform(creepWrapper, target){
 
     }
-}
-
-module.exports = {
-    Action
 }
