@@ -3,6 +3,10 @@ class Action{
         return 'Action';
     }
 
+    get isCompleted(){
+        return false;
+    }
+
     nextTarget(creepWrapper){
         return null;
     }
@@ -14,4 +18,8 @@ class Action{
     perform(creepWrapper, target){
 
     }
+}
+
+module.exports = {
+    Action
 }
