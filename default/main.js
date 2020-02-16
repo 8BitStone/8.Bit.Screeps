@@ -57,8 +57,14 @@ function doCreepStuff(){
         let wrapper = new Wrappers.CreepWrapper(creep);
 
         try {
-            let roleToProceed = _.find(wrapper.roles, (role) => role.canProceed(wrapper));
-            roleToProceed.run(wrapper);
+            for(let role in wrapper.roles){
+                let nextAction = role.getNextAction(wrapper);
+                if(nextAction && role.canProceed(wrapper, nextAction)){
+                    wrapper.action = nextAction;
+                    role.run(wrapper);
+                    break;
+                }
+            }
         }catch (e) {
             console.log('ERR in Creeploop!');
             console.log(e.stack);
