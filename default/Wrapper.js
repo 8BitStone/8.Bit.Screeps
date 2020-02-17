@@ -4,7 +4,7 @@ class CreepWrapper{
     constructor(creep){
         this._creep = creep;
         this._action = null;
-        this._roles = _.map(this._creep.memory.roles, (r) => Roles.Role.createRole(r));
+        this._roles = _.map(creep.memory.roles, (r) => Roles.Role.createRole(r));
         this._target = null;
     }
     

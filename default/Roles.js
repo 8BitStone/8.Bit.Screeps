@@ -20,7 +20,7 @@ class Role{
     }
 
     getNextAction(creepWrapper){
-        let currentAction = _.find(this.actions, (action) => action.name == creepWrapper.memory.action);
+        let currentAction = _.find(this.actions, (action) => action.name == creepWrapper.creep.memory.action);
         if(currentAction && !currentAction.isCompleted(creepWrapper)){
             return currentAction;
         }

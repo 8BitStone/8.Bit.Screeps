@@ -43,9 +43,8 @@ class HarvestAction extends Action{
     }
 
     isValidForCreep(creepWrapper){
-        console.log(creepWrapper.creep.body);
-        return creepWrapper.creep.body.find(part => part.type == Game.WORK) &&
-            creepWrapper.creep.body.find(part => part.type == Game.CARRY);
+        return creepWrapper.creep.body.find(part => part.type == WORK) &&
+            creepWrapper.creep.body.find(part => part.type == CARRY);
     }
 
     perform(creepWrapper, target){
@@ -85,7 +84,7 @@ class StoreEnergyAction extends Action{
     }
 
     isValidForCreep(creepWrapper){
-        return creepWrapper.creep.body.find(part => part.type == Game.CARRY) &&
+        return creepWrapper.creep.body.find(part => part.type == CARRY) &&
             creepWrapper.creep.store.getUsedCapacity(RESOURCE_ENERGY) > 0;
     }
 

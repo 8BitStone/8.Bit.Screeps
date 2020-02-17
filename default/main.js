@@ -57,7 +57,8 @@ function doCreepStuff(){
         let wrapper = new Wrappers.CreepWrapper(creep);
 
         try {
-            for(let role in wrapper.roles){
+            for(let idx in wrapper.roles){
+                let role = wrapper.roles[idx];
                 let nextAction = role.getNextAction(wrapper);
                 if(nextAction && role.canProceed(wrapper, nextAction)){
                     wrapper.action = nextAction;
