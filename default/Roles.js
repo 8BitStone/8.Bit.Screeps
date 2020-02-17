@@ -59,7 +59,35 @@ class HarvesterRole extends Role{
     }
 }
 
+class BuilderRole extends Role{
+    get name(){
+        return 'B';
+    }
+
+    get actions(){
+        return [
+            new Actions.HarvestAction,
+            new Actions.BuildAndRepairAction
+        ]
+    }
+}
+
+class UpgraderRole extends Role{
+    get name(){
+        return 'B';
+    }
+
+    get actions(){
+        return [
+            new Actions.HarvestAction,
+            new Actions.UpgradeAction
+         ]
+    }
+}
+
 module.exports = {
     Role,
-    HarvesterRole
+    HarvesterRole,
+    BuilderRole,
+    UpgraderRole
 }
