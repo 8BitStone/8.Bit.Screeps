@@ -39,12 +39,12 @@ class HarvestAction extends Action{
     nextTarget(creepWrapper){
         let sources = creepWrapper.creep.room.find(FIND_SOURCES);
         //ToDo: Implement NodeDispatcher
-        return sources[1];
+        return sources[0];
     }
 
     isValidForCreep(creepWrapper){
-        return creepWrapper.creep.body.find(part => part.type == WORK) &&
-            creepWrapper.creep.body.find(part => part.type == CARRY);
+        return creepWrapper.creep.body.some(part => part.type == WORK) &&
+            creepWrapper.creep.body.some(part => part.type == CARRY);
     }
 
     perform(creepWrapper, target){

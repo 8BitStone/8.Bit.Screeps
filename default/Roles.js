@@ -26,8 +26,8 @@ class Role{
         }
 
         if(currentAction){
-            let idx = this.actions.indexOf(currentAction);
-            idx = idx + 1 % this.actions.length
+            let idx = _.findIndex(this.actions, (action) => action.name == creepWrapper.creep.memory.action);
+            idx = (idx + 1) % this.actions.length;
             return this.actions[idx];
         }
 
