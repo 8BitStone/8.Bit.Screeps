@@ -8,7 +8,15 @@ class Role{
 
     static createRole(string){
         //ToDo: Implement logic which role to take
-        return new HarvesterRole();
+        switch (string.toUpperCase()) {
+            case "H":
+                return new HarvesterRole();
+            case "B":
+                return new BuilderRole();
+            case "U":
+                return new UpgraderRole();
+        }
+        console.log("Role.createRole: No Role found for Input: " + string);
     }
 
     get actions(){
