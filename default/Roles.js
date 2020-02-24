@@ -23,6 +23,10 @@ class Role{
         return [];
     }
 
+    isExecutionNeeded(creepWrapper){
+        return true;
+    }
+
     canProceed(creepWrapper, action){
         return action.isValidForCreep(creepWrapper);
     }
