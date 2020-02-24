@@ -41,12 +41,12 @@ function spawnCreeps(spawn){
     let upgrader = _.filter(Game.creeps, (creep) => _.find(creep.memory.roles, (r) => r == 'u'));
 
     if(!spawn.spawning){
-        if(harvester.length < 6){
+        if(harvester.length < 1){ //6
             spawn.spawnCreep([WORK, WORK, MOVE, CARRY], 'h' + Game.time, {memory: {roles: ['h']}});
-        }else if(harvester.length > 0 && builder.length < 4 && !spawn.spawning){
-            spawn.spawnCreep([WORK, WORK, MOVE, MOVE, CARRY, CARRY], 'b' + Game.time, {memory: {roles: ['b']}});
-        }else if(harvester.length > 0 && upgrader.length < 6 && !spawn.spawning){
-            spawn.spawnCreep([WORK, WORK, MOVE, MOVE, CARRY, CARRY], 'u' + Game.time, {memory: {roles: ['u']}});
+        }else if(harvester.length > 0 && builder.length < 1 && !spawn.spawning){ //4
+            spawn.spawnCreep([WORK, WORK, MOVE, CARRY], 'b' + Game.time, {memory: {roles: ['b']}});
+        }else if(harvester.length > 0 && upgrader.length < 1 && !spawn.spawning){ //6
+            spawn.spawnCreep([WORK, WORK, MOVE, CARRY], 'u' + Game.time, {memory: {roles: ['u']}});
         }
     }
 }

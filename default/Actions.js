@@ -78,7 +78,7 @@ class StoreEnergyAction extends Action{
             if(notFullEnergyTarget){
                 return notFullEnergyTarget;
             }
-            return new targets[0];
+            return targets[0];
         }
         return null;
     }
@@ -95,7 +95,7 @@ class StoreEnergyAction extends Action{
     }
 }
 
-class BuildAndRepairAction extends Action{
+class BuildAction extends Action{
     get name(){
         return 'BuildAction';
     }
@@ -105,12 +105,7 @@ class BuildAndRepairAction extends Action{
     }
 
     nextTarget(creepWrapper){
-        let targets = creepWrapper.creep.room.find(FIND_MY_STRUCTURES, {filter: (structure) => { return structure.hits < structure.hitsMax }});
-        if(targets.length) {
-            return targets[0];
-        }
-
-        targets = creepWrapper.creep.room.find(FIND_CONSTRUCTION_SITES);
+        let targets = creepWrapper.creep.room.find(FIND_CONSTRUCTION_SITES);
         if(targets.length) {
             return targets[0];
         }
@@ -126,6 +121,16 @@ class BuildAndRepairAction extends Action{
         if(creepWrapper.creep.build(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
             creepWrapper.creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
         }
+    }
+}
+
+class RepairAction extends BuildAction{
+    nextTarget(creepWrapper){
+        let targets = creepWrapper.creep.room.find(FIND_MY_STRUCTURES, {filter: (structure) => { return structure.hits < structure.hitsMax }});
+        if(targets.length) {
+            return targets[0];
+        }
+        return null;
     }
 }
 
@@ -159,6 +164,7 @@ module.exports = {
     IdleAction,
     HarvestAction,
     StoreEnergyAction,
-    BuildAndRepairAction,
+    BuildAction,
+    RepairAction,
     UpgradeAction
 }

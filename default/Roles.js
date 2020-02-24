@@ -13,6 +13,8 @@ class Role{
                 return new HarvesterRole();
             case "B":
                 return new BuilderRole();
+            case 'R':
+                return new RepairRole();
             case "U":
                 return new UpgraderRole();
         }
@@ -76,10 +78,31 @@ class BuilderRole extends Role{
         return 'B';
     }
 
+    isExecutionNeeded(creepWrapper){
+        return this.actions[1].nextTarget(creepWrapper) != null;
+    }
+
     get actions(){
         return [
             new Actions.HarvestAction,
-            new Actions.BuildAndRepairAction
+            new Actions.BuildAction
+        ]
+    }
+}
+
+class RepairRole extends Role{
+    get name(){
+        return 'R';
+    }
+
+    isExecutionNeeded(creepWrapper){
+        return this.actions[1].nextTarget(creepWrapper) != null;
+    }
+
+    get actions(){
+        return [
+            new Actions.HarvestAction,
+            new Actions.RepairAction
         ]
     }
 }
@@ -87,6 +110,10 @@ class BuilderRole extends Role{
 class UpgraderRole extends Role{
     get name(){
         return 'B';
+    }
+
+    isExecutionNeeded(creepWrapper){
+        return this.actions[1].nextTarget(creepWrapper) != null;
     }
 
     get actions(){
@@ -101,5 +128,6 @@ module.exports = {
     Role,
     HarvesterRole,
     BuilderRole,
+    RepairRole,
     UpgraderRole
 }
